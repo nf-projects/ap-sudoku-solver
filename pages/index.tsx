@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {isBoardValid} from "@/util/SudokuUtil";
+import {isBoardValid, solveBoard} from "@/util/SudokuUtil";
 
 interface CellProps {
     index: number;
@@ -136,14 +136,52 @@ export default function Home() {
                 {inputElements}
             </div>
             <div>
-                <h1>Sudoku Utils:</h1>
+                <h1 className="text-3xl font-bold">Sudoku Utils:</h1>
                 <ul>
                     {/*<li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>*/}
-                    <li>Is 2 valid in row
-                        0: {isBoardValid(board, 0, 1, 2) ? "yes" : "no"}</li>
+                    <li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>
                     <li>
                         <button
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => {
+                                // const template = [
+                                //     3,4,0,8,2,6,0,7,1,
+                                //     0,0,8,0,0,0,9,0,0,
+                                //     7,6,0,0,9,0,0,4,3,
+                                //     0,8,0,1,0,2,0,3,0,
+                                //     0,3,0,0,0,0,0,9,0,
+                                //     0,7,0,9,0,4,0,1,0,
+                                //     8,2,0,0,4,0,0,5,9,
+                                //     0,0,7,0,0,0,3,0,0,
+                                //     4,1,0,3,8,9,0,6,2,
+                                // ];
+
+                                const template = [
+                                    6, 0, 3, 0, 0, 0, 0, 0, 4,
+                                    0, 0, 0, 0, 0, 3, 0, 7, 0,
+                                    0, 4, 5, 6, 2, 0, 0, 0, 0,
+                                    8, 0, 0, 3, 7, 0, 0, 4, 0,
+                                    0, 5, 0, 0, 0, 0, 0, 0, 6,
+                                    0, 0, 0, 0, 1, 6, 0, 8, 2,
+                                    5, 7, 8, 0, 6, 4, 3, 0, 9,
+                                    0, 2, 0, 0, 0, 0, 1, 0, 7,
+                                    1, 0, 6, 7, 9, 2, 4, 0, 8,
+                                ];
+
+                                let newBoard = [...board];
+
+                                for (let i = 0; i < 81; i++) {
+                                    newBoard[i].value = template[i] === 0 ? null : template[i];
+                                }
+
+                                setBoard(newBoard);
+                            }}
+                        >Fill Board (Valid partial)
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => {
                                 const template = [
                                     8, 2, 7, 1, 5, 4, 3, 9, 6,
@@ -165,7 +203,22 @@ export default function Home() {
 
                                 setBoard(newBoard);
                             }}
-                        >Fill Board
+                        >Fill Board (Valid full)
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="mt-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => {
+                                const result = solveBoard(board);
+
+                                if (result) {
+                                    setBoard(result);
+                                } else {
+                                    alert("No solution found!");
+                                }
+                            }}
+                        >Solve Board
                         </button>
                     </li>
                 </ul>

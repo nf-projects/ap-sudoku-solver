@@ -19,7 +19,7 @@ export function isBoardValid(board: SudokuCellData[]): boolean {
             const cell = board[row * 9 + col];
 
             if (cell == null || cell.value == null) {
-                return false;
+                continue;
             }
 
             // make sure it's a valid number
@@ -52,4 +52,47 @@ export function isBoardValid(board: SudokuCellData[]): boolean {
     }
 
     return true;
+}
+
+export function solveBoard(board: SudokuCellData[]): SudokuCellData[] | null {
+    // helper function to get the next empty cell to fill in the board
+    const getNextEmptyCell = (): SudokuCellData | null => {
+        for (let i = 0; i < board.length; i++) {
+            if (board[i].value === null) {
+                return board[i];
+            }
+        }
+        return null;
+    };
+
+    // check if the current board is valid
+    if (!isBoardValid(board)) {
+        return null;
+    }
+
+    // get the next empty cell
+    const nextEmptyCell = getNextEmptyCell();
+
+    // if there are no empty cells, the board is solved
+    if (!nextEmptyCell) {
+        return board;
+    }
+
+    // try each possible value for the empty cell
+    for (let value = 1; value <= 9; value++) {
+        // create a copy of the board with the current value inserted into the empty cell
+        const updatedBoard = [...board];
+        updatedBoard[nextEmptyCell.index] = {index: nextEmptyCell.index, value};
+
+        // recursively solve the updated board
+        const solvedBoard = solveBoard(updatedBoard);
+
+        // if a solution is found, return it
+        if (solvedBoard) {
+            return solvedBoard;
+        }
+    }
+
+    // If no solution is found, return null
+    return null;
 }
