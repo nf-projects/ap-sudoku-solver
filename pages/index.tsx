@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
+import {isBoardValid} from "@/util/SudokuUtil";
 
 interface CellProps {
     index: number;
     updateValue: (index: number, value: number | null) => void;
+    board: SudokuCellData[];
 }
 
 function SudokuCellElement(props: CellProps) {
@@ -57,8 +59,9 @@ function SudokuCellElement(props: CellProps) {
             key={props.index}
             type="number"
             min="1"
+            value={props.board[props.index]?.value || ""}
             max="9"
-            onChange={(e) => {
+            onInput={(e: any) => {
                 const value = parseInt(e.target.value);
 
                 // make sure manually entered values are valid
@@ -76,7 +79,7 @@ function SudokuCellElement(props: CellProps) {
                 setOldValue(value);
                 props.updateValue(props.index, value);
             }}
-            className={"text-center border border-gray-300 text-4xl font-bold pl-4 w-20 h-20 rounded-md" + " " + colorName}
+            className={"text-center border border-gray-300 text-4xl font-bold pl-4 w-20 h-20 rounded-md " + colorName}
         />
     );
 }
@@ -119,7 +122,7 @@ export default function Home() {
                                                 updateValue={(index, value) => {
                                                     updateBoardValue(index, value);
                                                     console.log(board);
-                                                }}/>);
+                                                }} board={board}/>);
 
             count++;
         }
@@ -131,6 +134,41 @@ export default function Home() {
         <div className="flex justify-center">
             <div className="m-4">
                 {inputElements}
+            </div>
+            <div>
+                <h1>Sudoku Utils:</h1>
+                <ul>
+                    {/*<li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>*/}
+                    <li>Is 2 valid in row
+                        0: {isBoardValid(board, 0, 1, 2) ? "yes" : "no"}</li>
+                    <li>
+                        <button
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => {
+                                const template = [
+                                    8, 2, 7, 1, 5, 4, 3, 9, 6,
+                                    9, 6, 5, 3, 2, 7, 1, 4, 8,
+                                    3, 4, 1, 6, 8, 9, 7, 5, 2,
+                                    5, 9, 3, 4, 6, 8, 2, 7, 1,
+                                    4, 7, 2, 5, 1, 3, 6, 8, 9,
+                                    6, 1, 8, 9, 7, 2, 4, 3, 5,
+                                    7, 8, 6, 2, 3, 5, 9, 1, 4,
+                                    1, 5, 4, 7, 9, 6, 8, 2, 3,
+                                    2, 3, 9, 8, 4, 1, 5, 6, 7
+                                ];
+
+                                let newBoard = [...board];
+
+                                for (let i = 0; i < 81; i++) {
+                                    newBoard[i].value = template[i];
+                                }
+
+                                setBoard(newBoard);
+                            }}
+                        >Fill Board
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     );
