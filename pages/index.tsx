@@ -9,19 +9,7 @@ interface CellProps {
 
 function SudokuCellElement(props: CellProps) {
     // maps index -> color id
-    const colorBlindColors = [
-        0, 0, 0, 1, 1, 1, 2, 2, 2,
-        0, 0, 0, 1, 1, 1, 2, 2, 2,
-        0, 0, 0, 1, 1, 1, 2, 2, 2,
-        3, 3, 3, 4, 4, 4, 5, 5, 5,
-        3, 3, 3, 4, 4, 4, 5, 5, 5,
-        3, 3, 3, 4, 4, 4, 5, 5, 5,
-        6, 6, 6, 7, 7, 7, 8, 8, 8,
-        6, 6, 6, 7, 7, 7, 8, 8, 8,
-        6, 6, 6, 7, 7, 7, 8, 8, 8
-    ];
-
-    const normalColors = [
+    const colors = [
         0, 0, 0, 1, 1, 1, 0, 0, 0,
         0, 0, 0, 1, 1, 1, 0, 0, 0,
         0, 0, 0, 1, 1, 1, 0, 0, 0,
@@ -47,7 +35,7 @@ function SudokuCellElement(props: CellProps) {
     ];
 
     // get the color id for this cell
-    const colorId = normalColors[props.index];
+    const colorId = colors[props.index];
 
     // get the color name for this cell
     const colorName = colorNames[colorId];
@@ -144,18 +132,6 @@ export default function Home() {
                         <button
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => {
-                                // const template = [
-                                //     3,4,0,8,2,6,0,7,1,
-                                //     0,0,8,0,0,0,9,0,0,
-                                //     7,6,0,0,9,0,0,4,3,
-                                //     0,8,0,1,0,2,0,3,0,
-                                //     0,3,0,0,0,0,0,9,0,
-                                //     0,7,0,9,0,4,0,1,0,
-                                //     8,2,0,0,4,0,0,5,9,
-                                //     0,0,7,0,0,0,3,0,0,
-                                //     4,1,0,3,8,9,0,6,2,
-                                // ];
-
                                 const template = [
                                     6, 0, 3, 0, 0, 0, 0, 0, 4,
                                     0, 0, 0, 0, 0, 3, 0, 7, 0,

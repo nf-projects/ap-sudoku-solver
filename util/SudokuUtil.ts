@@ -1,6 +1,8 @@
 // returns whether or not a sudoku board is valid
 import {SudokuCellData} from "@/pages";
 
+let operations = 0;
+
 export function isBoardValid(board: SudokuCellData[]): boolean {
     const rows: number[][] = [];
     const columns: number[][] = [];
@@ -19,33 +21,41 @@ export function isBoardValid(board: SudokuCellData[]): boolean {
             const cell = board[row * 9 + col];
 
             if (cell == null || cell.value == null) {
+                operations++;
                 continue;
             }
 
             // make sure it's a valid number
             if (cell.value && (cell.value < 1 || cell.value > 9)) {
+                operations++;
                 return false;
             }
 
             // check if it's already present in the same row
             if (cell.value && rows[row].includes(cell.value)) {
+                operations++;
                 return false;
             } else {
+                operations++;
                 rows[row].push(cell.value);
             }
 
             // check if it's already present in the same column
             if (cell.value && columns[col].includes(cell.value)) {
+                operations++;
                 return false;
             } else {
+                operations++;
                 columns[col].push(cell.value);
             }
 
             // check if it's already present in the same box
             const boxIndex = Math.floor(row / 3) * 3 + Math.floor(col / 3);
             if (cell.value && boxes[boxIndex].includes(cell.value)) {
+                operations++;
                 return false;
             } else {
+                operations++;
                 boxes[boxIndex].push(cell.value);
             }
         }
@@ -56,14 +66,14 @@ export function isBoardValid(board: SudokuCellData[]): boolean {
 
 export function solveBoard(board: SudokuCellData[]): SudokuCellData[] | null {
     // helper function to get the next empty cell to fill in the board
-    const getNextEmptyCell = (): SudokuCellData | null => {
+    function getNextEmptyCell(): SudokuCellData | null {
         for (let i = 0; i < board.length; i++) {
             if (board[i].value === null) {
                 return board[i];
             }
         }
         return null;
-    };
+    }
 
     // check if the current board is valid
     if (!isBoardValid(board)) {
@@ -75,6 +85,7 @@ export function solveBoard(board: SudokuCellData[]): SudokuCellData[] | null {
 
     // if there are no empty cells, the board is solved
     if (!nextEmptyCell) {
+        console.log(operations);
         return board;
     }
 
