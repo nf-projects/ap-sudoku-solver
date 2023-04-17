@@ -86,6 +86,7 @@ export function solveBoard(board: SudokuCellData[]): SudokuCellData[] | null {
     // if there are no empty cells, the board is solved
     if (!nextEmptyCell) {
         console.log(operations);
+        operations = 0;
         return board;
     }
 
@@ -106,4 +107,31 @@ export function solveBoard(board: SudokuCellData[]): SudokuCellData[] | null {
 
     // If no solution is found, return null
     return null;
+}
+
+// this function is a lot faster because it just takes an empty board and solves it instead of generating a random solution
+export function generateRandomBoardFast(providedCells: number): SudokuCellData[] {
+    const board: SudokuCellData[] = [];
+    for (let i = 0; i < 81; i++) {
+        board.push({index: i, value: null});
+    }
+
+    // solve the board
+    const solvedBoard = solveBoard(board) || [];
+
+    // remove cells until the desired number of cells is reached
+    while (solvedBoard.filter(cell => cell.value !== null).length > providedCells) {
+        // get a random cell
+        const randomCell = solvedBoard[Math.floor(Math.random() * solvedBoard.length)];
+
+        // if the cell is already empty, try again
+        if (randomCell.value === null) {
+            continue;
+        }
+
+        // remove the cell
+        randomCell.value = null;
+    }
+
+    return solvedBoard;
 }

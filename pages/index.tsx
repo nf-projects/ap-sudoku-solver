@@ -1,5 +1,9 @@
 import {useEffect, useState} from "react";
-import {isBoardValid, solveBoard} from "@/util/SudokuUtil";
+import {
+    generateRandomBoardFast,
+    isBoardValid,
+    solveBoard
+} from "@/util/SudokuUtil";
 
 interface CellProps {
     index: number;
@@ -180,6 +184,19 @@ export default function Home() {
                                 setBoard(newBoard);
                             }}
                         >Fill Board (Valid full)
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => {
+                                const board = generateRandomBoardFast(30);
+
+                                if (board) {
+                                    setBoard(board);
+                                }
+                            }}
+                        >Generate Random Unsolved Board (30 cells)
                         </button>
                     </li>
                     <li>
