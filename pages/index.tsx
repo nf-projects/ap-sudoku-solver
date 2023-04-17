@@ -128,7 +128,11 @@ export default function Home() {
                 {inputElements}
             </div>
             <div>
-                <h1 className="text-3xl font-bold">Sudoku Utils:</h1>
+                <h1 className="text-3xl font-bold">Sudoku Solver:</h1>
+                <p className="max-w-md">
+                    Welcome to my Sudoku solver! Input data with your keyboard
+                    by clicking a cell on the board, then click "Solve Board".
+                </p>
                 <ul>
                     {/*<li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>*/}
                     <li className="text-lg font-bold">{isBoardValid(board) ? "This board is valid!" : "This board is not valid!"}</li>

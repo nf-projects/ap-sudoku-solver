@@ -1,38 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**Describes the overall purpose of the program**
+a
 
-## Getting Started
+**Describes what functionality of the program is demonstrated in
+the video**
+a
 
-First, run the development server:
+**Describes the input and output of the program demonstrated in
+the video**
+a
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**The first program code segment must show how data have been
+stored in the list.**
+a
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**The second program code segment must show the data in the
+same list being used, such as creating new data from the existing
+data or accessing multiple elements in the list, as part of fulfilling
+the program’s purpose.**
+a
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Identifies the name of the list being used in this response**
+a
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**Describes what the data contained in the list represent in your
+program**
+a
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Explains how the selected list manages complexity in your program
+code by explaining why your program code could not be written, or
+how it would be written differently, if you did not use the list**
+a
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**The first program code segment must be a student-developed
+procedure that:
+□ Defines the procedure’s name and return type (if necessary)
+□ Contains and uses one or more parameters that have an effect
+on the functionality of the procedure
+□ Implements an algorithm that includes sequencing, selection,
+and iteration**
+a
 
-## Learn More
+**The second program code segment must show where your
+student-developed procedure is being called in your program.**
+a
 
-To learn more about Next.js, take a look at the following resources:
+**Describes in general what the identified procedure does and how it
+contributes to the overall functionality of the program**
+a
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Explains in detailed steps how the algorithm implemented in the
+identified procedure works. Your explanation must be detailed
+enough for someone else to recreate it.**
+a
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Describes two calls to the procedure identified in written response
+3c. Each call must pass a different argument(s) that causes a
+different segment of code in the algorithm to execute.
+First call:**
+a
 
-## Deploy on Vercel
+**Second call:**
+a
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Describes what condition(s) is being tested by each call to the
+procedure
+Condition(s) tested by the first call:**
+a
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Condition(s) tested by the second call:**
+a
+
+**Identifies the result of each call
+Result of the first call:**
+a
+
+**Result of the second call:**
+a
+
