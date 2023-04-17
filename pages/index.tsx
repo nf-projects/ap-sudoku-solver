@@ -123,7 +123,7 @@ export default function Home() {
     }
 
     return (
-        <div className="flex justify-center">
+        <div className="flex flex-col sm:flex-row sm:justify-center mx-auto">
             <div className="m-4">
                 {inputElements}
             </div>
@@ -131,61 +131,76 @@ export default function Home() {
                 <h1 className="text-3xl font-bold">Sudoku Utils:</h1>
                 <ul>
                     {/*<li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>*/}
-                    <li>Is valid: {isBoardValid(board) ? "yes" : "no"}</li>
+                    <li className="text-lg font-bold">{isBoardValid(board) ? "This board is valid!" : "This board is not valid!"}</li>
                     <li>
                         <button
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => {
-                                const template = [
-                                    6, 0, 3, 0, 0, 0, 0, 0, 4,
-                                    0, 0, 0, 0, 0, 3, 0, 7, 0,
-                                    0, 4, 5, 6, 2, 0, 0, 0, 0,
-                                    8, 0, 0, 3, 7, 0, 0, 4, 0,
-                                    0, 5, 0, 0, 0, 0, 0, 0, 6,
-                                    0, 0, 0, 0, 1, 6, 0, 8, 2,
-                                    5, 7, 8, 0, 6, 4, 3, 0, 9,
-                                    0, 2, 0, 0, 0, 0, 1, 0, 7,
-                                    1, 0, 6, 7, 9, 2, 4, 0, 8,
-                                ];
-
+                                // sets everything to null
                                 let newBoard = [...board];
-
                                 for (let i = 0; i < 81; i++) {
-                                    newBoard[i].value = template[i] === 0 ? null : template[i];
+                                    newBoard[i].value = null;
                                 }
 
                                 setBoard(newBoard);
                             }}
-                        >Fill Board (Valid partial)
+                        >Clear Board
                         </button>
                     </li>
-                    <li>
-                        <button
-                            className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                            onClick={() => {
-                                const template = [
-                                    8, 2, 7, 1, 5, 4, 3, 9, 6,
-                                    9, 6, 5, 3, 2, 7, 1, 4, 8,
-                                    3, 4, 1, 6, 8, 9, 7, 5, 2,
-                                    5, 9, 3, 4, 6, 8, 2, 7, 1,
-                                    4, 7, 2, 5, 1, 3, 6, 8, 9,
-                                    6, 1, 8, 9, 7, 2, 4, 3, 5,
-                                    7, 8, 6, 2, 3, 5, 9, 1, 4,
-                                    1, 5, 4, 7, 9, 6, 8, 2, 3,
-                                    2, 3, 9, 8, 4, 1, 5, 6, 7
-                                ];
+                    {/*<li>*/}
+                    {/*    <button*/}
+                    {/*        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"*/}
+                    {/*        onClick={() => {*/}
+                    {/*            const template = [*/}
+                    {/*                6, 0, 3, 0, 0, 0, 0, 0, 4,*/}
+                    {/*                0, 0, 0, 0, 0, 3, 0, 7, 0,*/}
+                    {/*                0, 4, 5, 6, 2, 0, 0, 0, 0,*/}
+                    {/*                8, 0, 0, 3, 7, 0, 0, 4, 0,*/}
+                    {/*                0, 5, 0, 0, 0, 0, 0, 0, 6,*/}
+                    {/*                0, 0, 0, 0, 1, 6, 0, 8, 2,*/}
+                    {/*                5, 7, 8, 0, 6, 4, 3, 0, 9,*/}
+                    {/*                0, 2, 0, 0, 0, 0, 1, 0, 7,*/}
+                    {/*                1, 0, 6, 7, 9, 2, 4, 0, 8,*/}
+                    {/*            ];*/}
 
-                                let newBoard = [...board];
+                    {/*            let newBoard = [...board];*/}
 
-                                for (let i = 0; i < 81; i++) {
-                                    newBoard[i].value = template[i];
-                                }
+                    {/*            for (let i = 0; i < 81; i++) {*/}
+                    {/*                newBoard[i].value = template[i] === 0 ? null : template[i];*/}
+                    {/*            }*/}
 
-                                setBoard(newBoard);
-                            }}
-                        >Fill Board (Valid full)
-                        </button>
-                    </li>
+                    {/*            setBoard(newBoard);*/}
+                    {/*        }}*/}
+                    {/*    >Fill Board (Valid partial)*/}
+                    {/*    </button>*/}
+                    {/*</li>*/}
+                    {/*<li>*/}
+                    {/*    <button*/}
+                    {/*        className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"*/}
+                    {/*        onClick={() => {*/}
+                    {/*            const template = [*/}
+                    {/*                8, 2, 7, 1, 5, 4, 3, 9, 6,*/}
+                    {/*                9, 6, 5, 3, 2, 7, 1, 4, 8,*/}
+                    {/*                3, 4, 1, 6, 8, 9, 7, 5, 2,*/}
+                    {/*                5, 9, 3, 4, 6, 8, 2, 7, 1,*/}
+                    {/*                4, 7, 2, 5, 1, 3, 6, 8, 9,*/}
+                    {/*                6, 1, 8, 9, 7, 2, 4, 3, 5,*/}
+                    {/*                7, 8, 6, 2, 3, 5, 9, 1, 4,*/}
+                    {/*                1, 5, 4, 7, 9, 6, 8, 2, 3,*/}
+                    {/*                2, 3, 9, 8, 4, 1, 5, 6, 7*/}
+                    {/*            ];*/}
+
+                    {/*            let newBoard = [...board];*/}
+
+                    {/*            for (let i = 0; i < 81; i++) {*/}
+                    {/*                newBoard[i].value = template[i];*/}
+                    {/*            }*/}
+
+                    {/*            setBoard(newBoard);*/}
+                    {/*        }}*/}
+                    {/*    >Fill Board (Valid full)*/}
+                    {/*    </button>*/}
+                    {/*</li>*/}
                     <li>
                         <button
                             className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
