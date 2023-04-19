@@ -142,23 +142,44 @@ array of SudokuCellData objects.
 3c. Each call must pass a different argument(s) that causes a
 different segment of code in the algorithm to execute.
 First call:**
-a
+<li>
+    <button
+        className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => {
+            const board = generateRandomBoard(30);
+
+            setBoard(board);
+        }}
+    >Generate Random Unsolved Board (30 cells filled out)
+    </button>
+
+</li>
 
 **Second call:**
-a
+<li>
+    <button
+        className="mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => {
+            const board = generateRandomBoard(20);
+
+            setBoard(board);
+        }}
+    >Generate Random Unsolved Board (20 cells filled out)
+    </button>
+
+</li>
 
 **Describes what condition(s) is being tested by each call to the
 procedure
 Condition(s) tested by the first call:**
-a
+The first call tests if the number of cells filled out is 30.
 
 **Condition(s) tested by the second call:**
-a
+The second call tests if the number of cells filled out is 20.
 
 **Identifies the result of each call
 Result of the first call:**
-a
+The first call returns a solved board with 30 cells filled out.
 
 **Result of the second call:**
-a
-
+The second call returns a solved board with 20 cells filled out.
