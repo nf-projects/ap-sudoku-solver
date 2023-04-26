@@ -1,5 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import {useEffect, useState} from "react";
 import {generateRandomBoard, isBoardValid, solveBoard} from "@/util/SudokuUtil";
+import { useWindowSize } from "react-use";
+import Confetti from 'react-confetti'
 
 interface CellProps {
     index: number;
@@ -78,10 +81,13 @@ export interface SudokuCellData {
 }
 
 export default function Home() {
+    const { width, height } = useWindowSize()
 
     const [board, setBoard] = useState<SudokuCellData[]>([]);
+    const [confettiOn, setConfettiOn] = useState<boolean>(false);
 
-    // initialize the board on first render
+    // When the program initially loads, the board is populated with null
+    // values to create an empty board:
     useEffect(() => {
         let newBoard: SudokuCellData[] = [];
         for (let i = 0; i < 81; i++) {
@@ -90,6 +96,7 @@ export default function Home() {
         setBoard(newBoard);
     }, []);
 
+    // updates a given board value
     function updateBoardValue(index: number, value: number | null) {
         const newBoard = [...board];
         const cell = newBoard.find((cell) => cell.index === index);
@@ -175,6 +182,10 @@ export default function Home() {
 
                                 if (result) {
                                     setBoard(result);
+                                    setConfettiOn(true);
+                                    setTimeout(() => {
+                                        setConfettiOn(false);
+                                    }, 5000);
                                 } else {
                                     alert("No solution found!");
                                 }
@@ -184,6 +195,7 @@ export default function Home() {
                     </li>
                 </ul>
             </div>
+            {confettiOn && <Confetti width={width} height={height}/>}
         </div>
     );
 }

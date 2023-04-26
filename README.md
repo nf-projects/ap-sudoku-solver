@@ -172,10 +172,12 @@ First call:**
 **Describes what condition(s) is being tested by each call to the
 procedure
 Condition(s) tested by the first call:**
-The first call tests if the number of cells filled out is 30.
+The first call tests if the number of cells filled out is 30. It will
+continue to remove cells until the number of cells filled out is 30.
 
 **Condition(s) tested by the second call:**
-The second call tests if the number of cells filled out is 20.
+The second call tests if the number of cells filled out is 20. It will
+continue to remove cells until the number of cells filled out is 20.
 
 **Identifies the result of each call
 Result of the first call:**
