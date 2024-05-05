@@ -1,4 +1,7 @@
-# Instructions
+# AP Computer Science Project
+This is my project for the AP Computer Science course
+
+# Install Instructions
 
 - Clone the repository
 - Install Node and NPM
